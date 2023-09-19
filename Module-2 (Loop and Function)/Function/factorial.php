@@ -14,6 +14,6 @@ function factorial( $n ) {
     return $result;
 }
 
-$x = "abc";
+$x = 6;
 
 echo "Factorial of {$x} is " . factorial( $x );
