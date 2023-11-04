@@ -1,0 +1,1 @@
+SELECT * FROM customer WHERE (`CITY` = 'Salem' AND `POSTAL_CODE` IN (03079, 03080)) OR (`CITY` = 'Wilmington' AND `POSTAL_CODE` = '01887' );

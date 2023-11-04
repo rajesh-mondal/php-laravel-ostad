@@ -1,0 +1,1 @@
+SELECT `CITY`, COUNT(*) as Total, `CITY`, `STATE`, `POSTAL_CODE` FROM customer GROUP BY `CITY`;
