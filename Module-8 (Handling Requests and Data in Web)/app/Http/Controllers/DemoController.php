@@ -4,32 +4,28 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 class DemoController extends Controller {
-    function demoAction( Request $request ): array {
-        // $name = $request->input("name");
-        // $age = $request->input("age");
-        // return "My name is ${name} and age is ${age}";
+    function demoAction( Request $request ): bool {
 
-        // return $request->input();
+        /* $photoFile = $request->file( "photo" );
+        $fileSize = filesize( $photoFile );
+        $fileType = filetype( $photoFile );
+        $fileOriginalName = $photoFile->getClientOriginalName();
+        $fileTempName = $photoFile->getFilename();
+        $fileExtension = $photoFile->extension();
 
-        // $name = $request->header('name');
-        // $age = $request->header('age');
+        return array(
+            "fileSize" => $fileSize,
+            "fileType" => $fileType,
+            "fileOriginalName" => $fileOriginalName,
+            "fileTempName" => $fileTempName,
+            "fileExtension" => $fileExtension,
+        ); */
 
-        // return "My name is ${name} and age is ${age}";
+        $photoFile = $request->file( "photo" );
+        $photoFile->storeAs( "upload", $photoFile->getClientOriginalName() );
+        $photoFile->move( public_path( "upload" ), $photoFile->getClientOriginalName() );
 
-        // return "This is my first request-response";
+        return true;
 
-        $pin = $request->header( 'pin' );
-        $city = $request->input( 'city' );
-        $postcode = $request->input( 'postcode' );
-        $name = $request->name;
-        $age = $request->age;
-
-        return array( 
-            "pin" => $pin,
-            "city"=> $city,
-            "postcode"=> $postcode,
-            "name"=> $name,
-            "age"=> $age,
-         );
     }
 }
