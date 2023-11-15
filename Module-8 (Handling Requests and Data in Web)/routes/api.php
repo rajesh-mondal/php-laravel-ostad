@@ -22,4 +22,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post("/persons",[ApiController::class,"createAPersons"]);
 
-Route::post("/hello", [DemoController::class,"demoAction"] );
+// Route::post("/hello", [DemoController::class,"demoAction"] );
+Route::post("/hello", [DemoController::class,"cookie"] );

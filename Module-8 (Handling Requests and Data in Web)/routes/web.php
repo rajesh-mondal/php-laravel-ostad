@@ -31,4 +31,5 @@ use App\Http\Controllers\DemoController;
 
 // Route::post("/api/persons", [ApiController::class,"createAPerson"] );
 
-Route::post("/hello", [DemoController::class,"demoAction"] );
+// Route::post("/hello", [DemoController::class,"demoAction"] );
+Route::post("/hello", [DemoController::class,"cookie"] );

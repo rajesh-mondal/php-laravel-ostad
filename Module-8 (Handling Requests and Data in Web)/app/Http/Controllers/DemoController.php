@@ -14,11 +14,11 @@ class DemoController extends Controller {
         $fileExtension = $photoFile->extension();
 
         return array(
-            "fileSize" => $fileSize,
-            "fileType" => $fileType,
-            "fileOriginalName" => $fileOriginalName,
-            "fileTempName" => $fileTempName,
-            "fileExtension" => $fileExtension,
+        "fileSize" => $fileSize,
+        "fileType" => $fileType,
+        "fileOriginalName" => $fileOriginalName,
+        "fileTempName" => $fileTempName,
+        "fileExtension" => $fileExtension,
         ); */
 
         $photoFile = $request->file( "photo" );
@@ -26,6 +26,20 @@ class DemoController extends Controller {
         $photoFile->move( public_path( "upload" ), $photoFile->getClientOriginalName() );
 
         return true;
+    }
 
+    function ipAddress( Request $request ): string {
+        // for check IP
+        // return $request->ip();
+
+        if ( $request->accepts( ['text/html'] ) ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function cookie( Request $request ): string {
+        return $request->cookie('Cookie_1');
     }
 }
