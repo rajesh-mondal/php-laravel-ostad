@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class DemoController extends Controller {
@@ -41,5 +42,34 @@ class DemoController extends Controller {
 
     function cookie( Request $request ): string {
         return $request->cookie('Cookie_1');
+    }
+
+    function requestFormat( Request $request ): array | int | string | null | bool {
+        return array('A', 'B', 'C');
+    }
+
+    function jsonResponse( Request $request ):JsonResponse{
+        $code = 201;
+        $content = array('name'=>'Jack','city'=>'London');
+        return response()->json($content, $code);
+    }
+
+    // for response redirect
+    function demoAction1():string{
+        return redirect('/hello2');
+    }
+
+    function demoAction2():string{
+        return "Hello2";
+    }
+
+    function fileBinary(){
+        $filePath = "upload/Capture.png";
+        return response()->file( $filePath );
+    }
+
+    function fileDownload(){
+        $filePath = "upload/Capture.png";
+        return response()->download( $filePath );
     }
 }

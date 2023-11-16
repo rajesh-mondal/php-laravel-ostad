@@ -16,9 +16,9 @@ use App\Http\Controllers\DemoController;
 |
  */
 
-// Route::get( '/', function () {
-//     return view( 'welcome' );
-// } );
+Route::get( '/', function () {
+    return view( 'welcome' );
+} );
 
 // Route::get( "person/{name?}", [PersonController::class, "getPerson"] )->whereAlpha( "name" );
 // // Route::get( "person/{name?}", [PersonController::class, "getPerson"] )->whereAlphaNumeric( "name" );
@@ -32,4 +32,11 @@ use App\Http\Controllers\DemoController;
 // Route::post("/api/persons", [ApiController::class,"createAPerson"] );
 
 // Route::post("/hello", [DemoController::class,"demoAction"] );
-Route::post("/hello", [DemoController::class,"cookie"] );
+Route::post("/hello", [DemoController::class,"jsonResponse"] );
+
+//Response Riderect
+Route::get("/hello1", [DemoController::class,"demoAction1"] );
+Route::get("/hello2", [DemoController::class,"demoAction2"] );
+
+Route::get("/file-binary", [DemoController::class,"fileBinary"] );
+Route::get("/file-download", [DemoController::class,"fileDownload"] );
