@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ApiController;
 use App\Http\Controllers\PersonController;
 use App\Http\Controllers\DemoController;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,3 +41,7 @@ Route::get("/hello2", [DemoController::class,"demoAction2"] );
 
 Route::get("/file-binary", [DemoController::class,"fileBinary"] );
 Route::get("/file-download", [DemoController::class,"fileDownload"] );
+
+Route::get("/cookie-response", [DemoController::class,"cookieResponse"] );
+Route::get("/response-header", [DemoController::class,"responseHeader"] );
+Route::get("/response-view", [DemoController::class,"responseView"] );

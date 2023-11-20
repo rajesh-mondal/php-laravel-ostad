@@ -24,3 +24,7 @@ Route::post("/persons",[ApiController::class,"createAPersons"]);
 
 // Route::post("/hello", [DemoController::class,"demoAction"] );
 Route::post("/hello", [DemoController::class,"jsonResponse"] );
+
+Route::get("/cookie-response", [DemoController::class,"cookieResponse"] );
+Route::get("/response-header", [DemoController::class,"responseHeader"] );
+Route::get("/response-view", [DemoController::class,"responseView"] );
