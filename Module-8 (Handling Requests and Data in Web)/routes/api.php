@@ -28,3 +28,21 @@ Route::post("/hello", [DemoController::class,"jsonResponse"] );
 Route::get("/cookie-response", [DemoController::class,"cookieResponse"] );
 Route::get("/response-header", [DemoController::class,"responseHeader"] );
 Route::get("/response-view", [DemoController::class,"responseView"] );
+
+Route::post('/form-submit', function (Request $request) {
+
+    $email = $request->input('email');
+
+    if ($email) {
+        return response()->json([
+            'status'  => 'success',
+            'message' => 'Form submitted successfully.',
+            'email'   => $email,
+        ]);
+    } else {
+        return response()->json([
+            'status'  => 'failed',
+            'message' => 'Form submission failed.',
+        ]);
+    }
+});

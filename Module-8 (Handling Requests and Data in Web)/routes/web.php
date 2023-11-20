@@ -45,3 +45,10 @@ Route::get("/file-download", [DemoController::class,"fileDownload"] );
 Route::get("/cookie-response", [DemoController::class,"cookieResponse"] );
 Route::get("/response-header", [DemoController::class,"responseHeader"] );
 Route::get("/response-view", [DemoController::class,"responseView"] );
+
+Route::get('/user-agent', function(Request $request){
+
+    $userAgent = $request->header('User-Agent');
+
+    return $userAgent;
+});
