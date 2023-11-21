@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DemoController;
 use App\Http\Controllers\GreetingsController;
 use Illuminate\Support\Facades\Route;
 
@@ -34,3 +35,10 @@ Route::get( '/name/{name}', [GreetingsController::class, 'greet'] )->middleware(
 // })->middleware('simple');
 
 //->middleware('throttle:5,1');
+
+Route::get( '/DemoAction/{num1}/{num2}', [DemoController::class, 'DemoAction'] );
+Route::get( '/SessionPut/{email}', [DemoController::class, 'SessionPut'] );
+Route::get( '/SessionPull', [DemoController::class, 'SessionPull'] );
+Route::get( '/SessionGet', [DemoController::class, 'SessionGet'] );
+Route::get( '/SessionForget', [DemoController::class, 'SessionForget'] );
+Route::get( '/SessionFlush', [DemoController::class, 'SessionFlush'] );
