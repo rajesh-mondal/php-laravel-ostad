@@ -31,6 +31,7 @@ class Kernel extends HttpKernel
      */
     protected $middlewareGroups = [
         'web' => [
+            \App\Http\Middleware\DemoMiddleware::class,
             \App\Http\Middleware\EncryptCookies::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
             \Illuminate\Session\Middleware\StartSession::class,
@@ -68,5 +69,6 @@ class Kernel extends HttpKernel
         'simple' => \App\Http\Middleware\SimpleMiddleware::class,
         'addtitle' => \App\Http\Middleware\AddTitleMiddleware::class,
         'simple_response' => \App\Http\Middleware\SimpleResponseMiddleware::class,
+        'demo' => \App\Http\Middleware\DemoMiddleware::class,
     ];
 }
