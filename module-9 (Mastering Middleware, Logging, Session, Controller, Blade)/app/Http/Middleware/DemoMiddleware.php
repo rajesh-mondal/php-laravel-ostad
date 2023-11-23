@@ -12,7 +12,7 @@ class DemoMiddleware {
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    // public function handle( Request $request, Closure $next ): Response 
+    // public function handle( Request $request, Closure $next ): Response
     // {
     //     $key = $request->header( 'API-KEY' );
     //     if ( $key == "XYZ123" ) {
@@ -23,21 +23,20 @@ class DemoMiddleware {
     // }
 
     // Request Redirect
-    /* public function handle( Request $request, Closure $next ): Response 
+    /* public function handle( Request $request, Closure $next ): Response
     {
-        $key = $request->key;
-        if ( $key == "XYZ123" ) {
-            return $next( $request );
-        } else {
-            return response()->json( 'unauthorized', 401 );
-        }
+    $key = $request->key;
+    if ( $key == "XYZ123" ) {
+    return $next( $request );
+    } else {
+    return response()->json( 'unauthorized', 401 );
+    }
     } */
 
-    public function handle( Request $request, Closure $next ): Response 
-    {
+    public function handle( Request $request, Closure $next ): Response {
         // $request->headers->add(['email'=>'me@rajesh.com']);
         // $request->headers->replace(['email'=>'me@rajesh.com']);
-        $request->headers->remove('email');
+        $request->headers->remove( 'email' );
         return $next( $request );
     }
 }

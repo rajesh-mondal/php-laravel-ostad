@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\ConstController;
 use App\Http\Controllers\DemoController;
 use App\Http\Controllers\GreetingsController;
+use App\Http\Controllers\PhotoController;
+use App\Http\Controllers\VideoController;
 use App\Http\Middleware\DemoMiddleware;
 use Illuminate\Support\Facades\Route;
 
@@ -24,7 +27,7 @@ Route::get( '/', function () {
 // Route::get( '/hi', [GreetingsController::class, 'hi'] )->middleware( ['simple'] );
 
 // group middleware
-Route::middleware( ['simple','simple_response'] )->group( function () {
+Route::middleware( ['simple', 'simple_response'] )->group( function () {
     Route::get( '/hello', [GreetingsController::class, 'hello'] );
     Route::get( '/hi', [GreetingsController::class, 'hi'] );
 } );
@@ -45,20 +48,26 @@ Route::get( '/SessionForget', [DemoController::class, 'SessionForget'] );
 Route::get( '/SessionFlush', [DemoController::class, 'SessionFlush'] );
 
 // Request Verification
-Route::get("hello",[DemoController::class, 'RequestVerification'])->middleware([DemoMiddleware::class]);
+Route::get( "hello", [DemoController::class, 'RequestVerification'] )->middleware( [DemoMiddleware::class] );
 
 // Request Redirect
-Route::get("hello1/{key}",[DemoController::class, 'Redirect1'])->middleware([DemoMiddleware::class]);
-Route::get("hello2",[DemoController::class, 'Redirect2']);
+Route::get( "hello1/{key}", [DemoController::class, 'Redirect1'] )->middleware( [DemoMiddleware::class] );
+Route::get( "hello2", [DemoController::class, 'Redirect2'] );
 
 // Group Middleware
-Route::middleware(['demo'])->group(function(){
-    Route::get("hello1/{key}",[DemoController::class, 'Route1']);
-    Route::get("hello2/{key}",[DemoController::class, 'Route2']);
-    Route::get("hello3/{key}",[DemoController::class, 'Route3']);
-    Route::get("hello4/{key}",[DemoController::class, 'Route4']);
-});
+Route::middleware( ['demo'] )->group( function () {
+    Route::get( "hello1/{key}", [DemoController::class, 'Route1'] );
+    Route::get( "hello2/{key}", [DemoController::class, 'Route2'] );
+    Route::get( "hello3/{key}", [DemoController::class, 'Route3'] );
+    Route::get( "hello4/{key}", [DemoController::class, 'Route4'] );
+} );
 
-Route::get("hello-req",[DemoController::class, 'ManuRequest'])->middleware([DemoMiddleware::class]);
+Route::get( "hello-req", [DemoController::class, 'ManuRequest'] )->middleware( [DemoMiddleware::class] );
 
-Route::get("rate-limit",[DemoController::class, 'RateLimit'])->middleware('throttle:5,1');
+Route::get( "rate-limit", [DemoController::class, 'RateLimit'] )->middleware( 'throttle:5,1' );
+// for single action controller
+Route::get( "/video", VideoController::class );
+// for resource controller
+Route::resource( "photo", PhotoController::class );
+
+Route::get( "hello-const", [ConstController::class, 'ManRequest'] );
