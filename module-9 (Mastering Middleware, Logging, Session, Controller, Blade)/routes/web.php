@@ -3,7 +3,9 @@
 use App\Http\Controllers\ConstController;
 use App\Http\Controllers\DemoController;
 use App\Http\Controllers\GreetingsController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PhotoController;
+use App\Http\Controllers\SingleActionController;
 use App\Http\Controllers\VideoController;
 use App\Http\Middleware\DemoMiddleware;
 use Illuminate\Support\Facades\Route;
@@ -67,7 +69,10 @@ Route::get( "hello-req", [DemoController::class, 'ManuRequest'] )->middleware( [
 Route::get( "rate-limit", [DemoController::class, 'RateLimit'] )->middleware( 'throttle:5,1' );
 // for single action controller
 Route::get( "/video", VideoController::class );
+Route::get( "/single", SingleActionController::class );
 // for resource controller
 Route::resource( "photo", PhotoController::class );
 
 Route::get( "hello-const", [ConstController::class, 'ManRequest'] );
+
+Route::get( "/page/{num1}/{num2}", [HomeController::class, 'page'] );
