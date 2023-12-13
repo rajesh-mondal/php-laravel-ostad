@@ -19,3 +19,7 @@ Route::get( '/singleRow', [DemoController::class, 'singleRow'] );
 Route::get( '/aggregates', [DemoController::class, 'aggregates'] );
 Route::get( '/selectClauses', [DemoController::class, 'selectClauses'] );
 Route::get( '/innerJoin', [DemoController::class, 'innerJoin'] );
+Route::get( '/leftJoin', [DemoController::class, 'leftJoin'] );
+Route::get( '/crossJoin', [DemoController::class, 'crossJoin'] );
+Route::get( '/advancedJoin', [DemoController::class, 'advancedJoin'] );
+Route::get( '/union', [DemoController::class, 'union'] );
