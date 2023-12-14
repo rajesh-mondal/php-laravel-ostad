@@ -33,3 +33,4 @@ Route::get( '/orderBy', [DemoController::class, 'orderBy'] );
 Route::get( '/latestOldest', [DemoController::class, 'latestOldest'] );
 Route::get( '/skipTake', [DemoController::class, 'skipTake'] );
 Route::get( '/having', [DemoController::class, 'having'] );
+Route::get( '/insert', [DemoController::class, 'insert'] );

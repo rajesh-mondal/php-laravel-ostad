@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 
 class DemoController extends Controller {
     function DemoAction() {
@@ -164,5 +165,54 @@ class DemoController extends Controller {
             ->having( 'price', '>', 2000 )
             ->get();
         return $affected;
+    }
+
+    function insert() {
+        $result = DB::table( 'brands' )
+            ->insert([
+                'brandName' => 'Demo Brand',
+                'brandImg' => 'Demo Img',
+            ]);
+        return $result;
+    }
+
+    function insertRequest( Request $request ) {
+        $result = DB::table( 'brands' )
+            ->insert([
+                'brandName'=>$request->input( 'name' ),
+                'brandImg'=>$request->input( 'img' )
+            ]);
+        return $result;
+    }
+
+    function update( Request $request ){
+        $result = DB::table( 'brands' )
+            ->where( 'id', '=', $request->id )
+            ->update( $request->input() );
+        return $result;
+    }
+
+    function updateOrInsert( Request $request ){
+        $result = DB::table( 'brands' )
+            ->updateOrInsert(
+                ['brandName'=>$request->brandName],
+                $request->input()
+            );
+        return $result;
+    }
+
+    function incrementDecrement( Request $request ){
+        $result = DB::table( 'products' )
+            ->where( 'id', $request->id )
+            ->increment( 'price');
+            // ->decrement( 'price', 4 );
+        return $result;
+    }
+
+    function delete( Request $request ){
+        $result = DB::table( 'brands' )
+            ->where( 'id', $request->id )
+            ->delete();
+        return $result;
     }
 }

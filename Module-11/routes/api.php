@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DemoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::post( '/insert-request', [DemoController::class, 'insertRequest'] );
+Route::post( '/update/{id}', [DemoController::class, 'update'] );
+Route::post( '/upsert/{brandName}', [DemoController::class, 'updateOrInsert'] );
+Route::post( '/increment/{id}', [DemoController::class, 'incrementDecrement'] );
+Route::post( '/delete/{id}', [DemoController::class, 'delete'] );
